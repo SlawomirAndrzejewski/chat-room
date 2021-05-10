@@ -1,15 +1,31 @@
 <template>
   <div class="welcome container">
-      <SignupForm />
+      <div v-if="loggedIn">
+          <LoginForm />
+          <p>No account yet? <span @click="loggedIn = false">Sign up</span> instead</p>
+      </div>
+      <div v-else>
+          <SignupForm />
+          <p>Already registered? <span @click="loggedIn = true">Login</span> instead</p>
+      </div>
   </div>
 </template>
 
 <script>
 import SignupForm from "../components/SignupForm"
+import LoginForm from "../components/LoginForm"
+import { ref } from 'vue'
 
 export default {
     components: {
-        SignupForm
+        SignupForm,
+        LoginForm
+    },
+
+    setup() {
+        const loggedIn = ref(true)
+
+        return { loggedIn }
     }
 }
 </script>
