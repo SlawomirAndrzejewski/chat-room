@@ -60,7 +60,7 @@ export default {
   }
   .welcome button {
     margin: 20px auto;
-    background-color: rgb(255, 205, 205);
+    background-color: rgb(46, 173, 63);
     border: none;
     padding: 10px 15px;
     border-radius: 8px;
