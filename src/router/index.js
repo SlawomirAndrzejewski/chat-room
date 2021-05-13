@@ -10,11 +10,21 @@ const requiredAuth = (to, from, next) => {
   }
 }
 
+const requireNoAuth = (to, from, next) => {
+  let user = auth.currentUser
+  if (user) {
+    next({ name: "Chatroom" })
+  } else {
+    next()
+  }
+}
+
 const routes = [
   {
     path: '/',
     name: 'Welcome',
-    component: () => import('../views/Welcome.vue')
+    component: () => import('../views/Welcome.vue'),
+    beforeEnter: requireNoAuth
   },
   {
     path: '/chatroom',
